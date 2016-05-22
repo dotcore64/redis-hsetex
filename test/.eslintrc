@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "global-require": 0,
+    "func-names": 0
+  }
+}

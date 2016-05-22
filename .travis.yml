@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '6'
+deploy:
+  api_key:
+    secure: QFWNaJIYNvoW56txvnqwuIBQjkw/V95IPChqpIG5rNTo+zpk3MS6D7FL2KI6E6WOKkkn0n8I4Hr3a7MtVlImRTiauZPxC6ZOttEJfJf3Kbuo0+aSPdR9r0gDGuPyijeyvrUCOB78l/OndkwqEyViG2OI964z/R/L5j/g9siPjIcwLi9JV08poXxAtbPQuMNSG42IZGvZ9iAuNGNZjFeUca08sjfW/3p4CBA2EJH6ayp6FTeebzkrPLsbRUy5qdf7o8aORrrDAyYOraCDP0nWc3pB7gIfZ+DdVKGWxILi4PCvqytYpUs9cz3DgBbWwLPUKCBUR4Vte1lQvzkn0XhkiPO7H5xf+t63zvuLAaU2gtpv4RQoKjHmSGOi7grqRi/H0cZE1O35QcNVzfHGasjVorOcM5kREIu884Sl/zLn8Ouia7hhvZ4hi+yBbDFbmf/hGcPs6obvIfnK5VoWf32wWEno2LQDbpbpXfovm+W9LTvPiAAMQ/AX+p6+1ObnMaccX3pR1rellhnX/zfUW8lo+V07xSrGZaYpoQzvYj7S70SaIjxBOri/ZnxvjIVt9N9XelDHTpLS+Dh9gDHCYji9fXbWhhcL/l2caOo2WZjz2fYBhe58cjpWhkRJxd8+Q3r5Fz1b2GF0iIglfqhXc9oZDd40qXNIqcH0i6KPKKKmxgk=
+  email: julian@dotcore.co.il
+  provider: npm
+  on:
+    tags: true
+after_script:
+- npm run coveralls
+services:
+- redis-server
