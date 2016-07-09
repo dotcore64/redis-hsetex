@@ -2,7 +2,6 @@
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coverage Status][coveralls-badge]][coveralls]
 [![Dependency Status][dependency-status-badge]][dependency-status]
 [![devDependency Status][dev-dependency-status-badge]][dev-dependency-status]
 
@@ -71,9 +70,6 @@ See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
 [npm-badge]: https://img.shields.io/npm/v/redis-hsetex.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/redis-hsetex
-
-[coveralls-badge]: https://img.shields.io/coveralls/perrin4869/redis-hsetex/master.svg?style=flat-square
-[coveralls]: https://coveralls.io/r/perrin4869/redis-hsetex
 
 [dependency-status-badge]: https://david-dm.org/perrin4869/redis-hsetex.svg?style=flat-square
 [dependency-status]: https://david-dm.org/perrin4869/redis-hsetex

@@ -8,8 +8,6 @@
     "test:unit": "mocha test/unit",
     "test:integration": "mocha test/integration",
     "build": "gulp build",
-    "cover": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
     "prepublish": "npm run build"
   },
   "files": [
@@ -29,24 +27,17 @@
   },
   "homepage": "https://github.com/perrin4869/redis-hsetex#readme",
   "devDependencies": {
-    "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
-    "babel-eslint": "^6.0.4",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-preset-es2015-node4": "^2.1.0",
     "babel-preset-es2015-node6": "^0.2.0",
     "chai": "^3.5.0",
-    "coveralls": "^2.11.9",
-    "eslint": "^2.10.2",
-    "eslint-config-airbnb-base": "^3.0.1",
-    "eslint-plugin-import": "^1.8.0",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "gulp-redis-lua2js": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "ioredis": "^1.15.1",
-    "isparta": "^4.0.0",
     "mocha": "^2.4.5",
     "redis-pdel": "^1.0.2",
     "sinon": "^1.17.4"
