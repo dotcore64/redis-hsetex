@@ -1,6 +1,6 @@
 {
   "name": "redis-hsetex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hsetex lua command for redis clients",
   "main": "lib/index.js",
   "scripts": {
