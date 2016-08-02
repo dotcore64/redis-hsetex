@@ -33,7 +33,7 @@
     "babel-preset-es2015-node6": "^0.2.0",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^3.0.0",
     "gulp-redis-lua2js": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
