@@ -38,7 +38,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "ioredis": "^2.2.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.4.0",
     "redis-pdel": "^1.0.2",
     "sinon": "^1.17.4"
   }
