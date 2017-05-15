@@ -30,16 +30,16 @@
     "babel-core": "^6.10.4",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-preset-es2015-node4": "^2.1.0",
-    "babel-preset-es2015-node6": "^0.2.0",
+    "babel-preset-es2015-node6": "^0.4.0",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^4.3.1",
     "gulp-redis-lua2js": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "ioredis": "^2.2.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.4.1",
     "redis-pdel": "^1.0.2",
-    "sinon": "^1.17.4"
+    "sinon": "^2.2.0"
   }
 }
