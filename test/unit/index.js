@@ -1,36 +1,15 @@
-import path from 'path';
-import sinon from 'sinon';
-import { expect } from 'chai';
-import { readFileSync } from 'fs';
+const { join } = require('path');
+const { expect } = require('chai');
+const { readFileSync } = require('fs');
 
-import { name, lua, numberOfKeys, install } from '../../lib';
+const { name, lua, numberOfKeys } = require('../..');
 
-const expectation = {
-  name: 'hsetex',
-  lua: readFileSync(path.join(__dirname, '..', '..', 'src', 'hsetex.lua'), 'utf8'),
-  numberOfKeys: 1,
-};
+const hsetex = readFileSync(join(__dirname, '..', '..', 'src', 'hsetex.lua'), 'utf8');
 
 describe('unit', () => {
   it('should export correct object literal', () => {
-    expect(name).to.equal(expectation.name);
-    expect(lua).to.equal(expectation.lua);
-    expect(numberOfKeys).to.equal(expectation.numberOfKeys);
-  });
-
-  it('should install command into ioredis', () => {
-    const ioredis = {
-      defineCommand: sinon.spy(),
-    };
-
-    install(ioredis);
-    expect(ioredis.defineCommand.calledOnce).to.equal(true);
-    expect(ioredis.defineCommand.firstCall.args).to.deep.equal([
-      expectation.name,
-      {
-        lua: expectation.lua,
-        numberOfKeys: expectation.numberOfKeys,
-      },
-    ]);
+    expect(name).to.equal('hsetex');
+    expect(lua).to.equal(hsetex);
+    expect(numberOfKeys).to.equal(1);
   });
 });

@@ -4,18 +4,20 @@
   "description": "hsetex lua command for redis clients",
   "main": "lib/index.js",
   "scripts": {
-    "test": "gulp test",
+    "lint": "eslint 'test/**/*.js'",
+    "pretest": "npm run lint",
+    "test": "npm run test:unit && npm run test:integration",
     "test:unit": "mocha test/unit",
     "test:integration": "mocha test/integration",
     "build": "gulp build",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perrin4869/redis-hsetex.git"
+    "url": "git+https://github.com/dotcore64/redis-hsetex.git"
   },
   "keywords": [
     "redis"
@@ -23,23 +25,22 @@
   "author": "Julian Grinblat <julian@dotcore.co.il>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/perrin4869/redis-hsetex/issues"
+    "url": "https://github.com/dotcore64/redis-hsetex/issues"
   },
-  "homepage": "https://github.com/perrin4869/redis-hsetex#readme",
+  "homepage": "https://github.com/dotcore64/redis-hsetex#readme",
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-plugin-transform-async-to-generator": "^6.8.0",
-    "babel-preset-es2015-node4": "^2.1.0",
-    "babel-preset-es2015-node6": "^0.2.0",
-    "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
-    "gulp-redis-lua2js": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-util": "^3.0.7",
-    "ioredis": "^2.2.0",
-    "mocha": "^2.5.3",
-    "redis-pdel": "^1.0.2",
-    "sinon": "^1.17.4"
-  }
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "delay": "^4.3.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "gulp": "^4.0.2",
+    "gulp-redis-lua2js": "^2.0.0",
+    "gulp-rename": "^2.0.0",
+    "ioredis": "^4.16.3",
+    "mocha": "^7.1.2",
+    "redis-pdel": "^2.0.0"
+  },
+  "dependencies": {}
 }

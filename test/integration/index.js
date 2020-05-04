@@ -1,50 +1,93 @@
-import Redis from 'ioredis';
-import Promise from 'bluebird';
-import { expect } from 'chai';
-import { install as pdel } from 'redis-pdel';
-import { install as hsetex } from '../../lib';
+const Redis = require('ioredis');
+const delay = require('delay');
+const { use, expect } = require('chai');
+const pdel = require('redis-pdel');
+
+const hsetex = require('../..');
+
+use(require('chai-as-promised'));
+
+const keyPrefix = 'hsetex:test:';
+const redis = new Redis({ keyPrefix });
+
+redis.defineCommand(pdel.name, {
+  lua: pdel.lua,
+  numberOfKeys: pdel.numberOfKeys,
+});
+
+redis.defineCommand(hsetex.name, {
+  lua: hsetex.lua,
+  numberOfKeys: hsetex.numberOfKeys,
+});
 
 describe('integration', () => {
-  const keyPrefix = 'hsetex:test:';
-  const redis = new Redis({ keyPrefix });
-  pdel(redis);
-  hsetex(redis);
+  beforeEach(() => redis.pdel('*'));
+  after(() => redis.disconnect());
 
-  beforeEach(async () => {
-    await redis.pdel('*');
-
-    const res = await redis.hsetex('testhash', 1, 'foo', 'bar');
-    expect(res).to.equal(1);
+  describe('errors', () => {
+    it('should fail when no keys are passed', () => expect(redis.hsetex('testhash', 1))
+      .to.be.rejectedWith(Error, /Wrong number of args calling Redis/));
   });
 
-  after(async () => {
-    await redis.disconnect();
-  });
+  describe('single key', () => {
+    beforeEach(() => expect(redis.hsetex('testhash', 1, 'foo', 'bar')).to.become(1));
 
-  it('should not have expired yet', async () => {
-    await Promise.delay(100);
+    it('should not have expired yet', async () => {
+      await delay(100);
 
-    const res = await redis
-      .multi()
-      .hget('testhash', 'foo')
-      .pttl('testhash')
-      .exec();
+      const res = await redis
+        .multi()
+        .hget('testhash', 'foo')
+        .pttl('testhash')
+        .exec();
 
-    expect(res[0][1]).to.equal('bar');
-    expect(res[1][1]).to.be.lessThan(1000).and.greaterThan(500);
-  });
+      expect(res[0][1]).to.equal('bar');
+      expect(res[1][1]).to.be.lessThan(1000).and.greaterThan(500);
+    });
 
-  it('should have expired yet', async function() {
-    this.slow(1100);
+    it('should have expired yet', async () => {
+      await delay(1000);
+      const res = await redis
+        .multi()
+        .hget('testhash', 'foo')
+        .pttl('testhash')
+        .exec();
 
-    await Promise.delay(1000);
-    const res = await redis
-      .multi()
-      .hget('testhash', 'foo')
-      .pttl('testhash')
-      .exec();
+      expect(res[0][1]).to.equal(null);
+      expect(res[1][1]).to.be.lessThan(0);
+    });
+  }).slow(1100);
 
-    expect(res[0][1]).to.equal(null);
-    expect(res[1][1]).to.be.lessThan(0);
-  });
+  describe('multi keys', () => {
+    beforeEach(() => expect(redis.hsetex('testhash', 1, 'foo', 'bar', 'baz', 'baq')).to.become(2));
+
+    it('should not have expired yet', async () => {
+      await delay(100);
+
+      const res = await redis
+        .multi()
+        .hget('testhash', 'foo')
+        .hget('testhash', 'baz')
+        .pttl('testhash')
+        .exec();
+
+      expect(res[0][1]).to.equal('bar');
+      expect(res[1][1]).to.equal('baq');
+      expect(res[2][1]).to.be.lessThan(1000).and.greaterThan(500);
+    });
+
+    it('should have expired yet', async () => {
+      await delay(1000);
+      const res = await redis
+        .multi()
+        .hget('testhash', 'foo')
+        .hget('testhash', 'baz')
+        .pttl('testhash')
+        .exec();
+
+      expect(res[0][1]).to.equal(null);
+      expect(res[1][1]).to.equal(null);
+      expect(res[2][1]).to.be.lessThan(0);
+    });
+  }).slow(1100);
 });
