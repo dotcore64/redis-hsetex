@@ -61,8 +61,8 @@ npm test # run both tests
 
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
-[build-badge]: https://img.shields.io/travis/dotcore64/redis-hsetex/master.svg?style=flat-square
-[build]: https://travis-ci.org/dotcore64/redis-hsetex
+[build-badge]: https://img.shields.io/github/workflow/status/dotcore64/redis-hsetex/test/master?style=flat-square
+[build]: https://github.com/dotcore64/redis-hsetex/actions
 
 [npm-badge]: https://img.shields.io/npm/v/redis-hsetex.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/redis-hsetex

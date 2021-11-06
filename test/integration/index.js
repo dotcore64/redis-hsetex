@@ -1,10 +1,14 @@
-const Redis = require('ioredis');
-const delay = require('delay');
-const { use, expect } = require('chai');
-const pdel = require('redis-pdel');
+import { createRequire } from 'module';
+import Redis from 'ioredis';
+import { setTimeout } from 'timers/promises';
+import { use, expect } from 'chai';
+import * as pdel from 'redis-pdel';
 
-const hsetex = require('../..');
+// https://github.com/import-js/eslint-plugin-import/issues/1649
+// eslint-disable-next-line import/no-unresolved
+import { lua, name, numberOfKeys } from 'redis-hsetex';
 
+const require = createRequire(import.meta.url);
 use(require('chai-as-promised'));
 
 const keyPrefix = 'hsetex:test:';
@@ -15,9 +19,9 @@ redis.defineCommand(pdel.name, {
   numberOfKeys: pdel.numberOfKeys,
 });
 
-redis.defineCommand(hsetex.name, {
-  lua: hsetex.lua,
-  numberOfKeys: hsetex.numberOfKeys,
+redis.defineCommand(name, {
+  lua,
+  numberOfKeys,
 });
 
 describe('integration', () => {
@@ -33,7 +37,7 @@ describe('integration', () => {
     beforeEach(() => expect(redis.hsetex('testhash', 1, 'foo', 'bar')).to.become(1));
 
     it('should not have expired yet', async () => {
-      await delay(100);
+      await setTimeout(100);
 
       const res = await redis
         .multi()
@@ -46,7 +50,7 @@ describe('integration', () => {
     });
 
     it('should have expired yet', async () => {
-      await delay(1000);
+      await setTimeout(1000);
       const res = await redis
         .multi()
         .hget('testhash', 'foo')
@@ -55,14 +59,14 @@ describe('integration', () => {
 
       expect(res[0][1]).to.equal(null);
       expect(res[1][1]).to.be.lessThan(0);
-    });
-  }).slow(1100);
+    }).slow(1200);
+  });
 
   describe('multi keys', () => {
     beforeEach(() => expect(redis.hsetex('testhash', 1, 'foo', 'bar', 'baz', 'baq')).to.become(2));
 
     it('should not have expired yet', async () => {
-      await delay(100);
+      await setTimeout(100);
 
       const res = await redis
         .multi()
@@ -77,7 +81,7 @@ describe('integration', () => {
     });
 
     it('should have expired yet', async () => {
-      await delay(1000);
+      await setTimeout(1000);
       const res = await redis
         .multi()
         .hget('testhash', 'foo')
@@ -88,6 +92,6 @@ describe('integration', () => {
       expect(res[0][1]).to.equal(null);
       expect(res[1][1]).to.equal(null);
       expect(res[2][1]).to.be.lessThan(0);
-    });
-  }).slow(1100);
+    }).slow(1200);
+  });
 });
