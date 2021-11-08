@@ -1,6 +1,6 @@
 # redis-hsetex
 
-[![Travis][build-badge]][build]
+[![Build Status][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Dependency Status][dependency-status-badge]][dependency-status]
 [![devDependency Status][dev-dependency-status-badge]][dev-dependency-status]
