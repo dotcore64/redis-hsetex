@@ -1,6 +1,5 @@
 import { join } from 'path';
 import { readFileSync } from 'fs';
-import { createRequire } from 'module';
 import { dirname } from 'dirname-filename-esm';
 import { expect } from 'chai';
 
@@ -15,15 +14,5 @@ describe('unit', () => {
     expect(name).to.equal('hsetex');
     expect(lua).to.equal(hsetex);
     expect(numberOfKeys).to.equal(1);
-  });
-
-  it('should export correct object literal from cjs build', () => {
-    const require = createRequire(import.meta.url);
-    // eslint-disable-next-line import/extensions
-    expect(require('../..')).to.deep.equal({
-      name,
-      lua,
-      numberOfKeys,
-    });
   });
 });
