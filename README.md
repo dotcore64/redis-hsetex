@@ -2,8 +2,6 @@
 
 [![Build Status][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Dependency Status][dependency-status-badge]][dependency-status]
-[![devDependency Status][dev-dependency-status-badge]][dev-dependency-status]
 
 > hsetex lua command for redis clients
 
@@ -66,9 +64,3 @@ See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 
 [npm-badge]: https://img.shields.io/npm/v/redis-hsetex.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/redis-hsetex
-
-[dependency-status-badge]: https://david-dm.org/dotcore64/redis-hsetex.svg?style=flat-square
-[dependency-status]: https://david-dm.org/dotcore64/redis-hsetex
-
-[dev-dependency-status-badge]: https://david-dm.org/dotcore64/redis-hsetex/dev-status.svg?style=flat-square
-[dev-dependency-status]: https://david-dm.org/dotcore64/redis-hsetex#info=devDependencies
