@@ -1,11 +1,11 @@
-import { createRequire } from 'module';
+import { createRequire } from 'node:module';
+import { setTimeout } from 'node:timers/promises';
 import Redis from 'ioredis';
-import { setTimeout } from 'timers/promises';
 import { use, expect } from 'chai';
 import * as pdel from 'redis-pdel';
 
 // https://github.com/import-js/eslint-plugin-import/issues/1649
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line import/no-unresolved,n/no-missing-import
 import { lua, name, numberOfKeys } from 'redis-hsetex';
 
 const require = createRequire(import.meta.url);
