@@ -47,7 +47,7 @@
     "eslint-plugin-n": "^15.4.0",
     "eslint-plugin-unicorn": "^44.0.2",
     "gulp": "^4.0.2",
-    "gulp-redis-lua2js": "^4.0.1",
+    "gulp-redis-lua2js": "^4.0.2",
     "gulp-rename": "^2.0.0",
     "ioredis": "^5.2.3",
     "mocha": "^10.1.0",
