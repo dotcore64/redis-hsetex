@@ -51,6 +51,6 @@
     "gulp-rename": "^2.0.0",
     "ioredis": "^5.3.1",
     "mocha": "^10.2.0",
-    "redis-pdel": "^4.0.0"
+    "redis-pdel": "^4.0.1"
   }
 }
