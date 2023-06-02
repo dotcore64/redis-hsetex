@@ -4,7 +4,7 @@ import { dirname } from 'dirname-filename-esm';
 import { expect } from 'chai';
 
 // https://github.com/import-js/eslint-plugin-import/issues/1649
-// eslint-disable-next-line import/no-unresolved,n/no-missing-import
+// eslint-disable-next-line import/no-unresolved
 import { name, lua, numberOfKeys } from 'redis-hsetex';
 
 const hsetex = readFileSync(join(dirname(import.meta), '..', '..', 'src', 'hsetex.lua'), 'utf8');

@@ -5,7 +5,7 @@ import { use, expect } from 'chai';
 import * as pdel from 'redis-pdel';
 
 // https://github.com/import-js/eslint-plugin-import/issues/1649
-// eslint-disable-next-line import/no-unresolved,n/no-missing-import
+// eslint-disable-next-line import/no-unresolved
 import { lua, name, numberOfKeys } from 'redis-hsetex';
 
 const require = createRequire(import.meta.url);
