@@ -26,7 +26,7 @@ redis.defineCommand(name, {
 
 describe('integration', () => {
   beforeEach(() => redis.pdel('*'));
-  
+
   after(() => redis.disconnect());
 
   describe('errors', () => {
