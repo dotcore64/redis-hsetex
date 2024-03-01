@@ -50,7 +50,7 @@
     "gulp-redis-lua2js": "^4.0.3",
     "gulp-rename": "^2.0.0",
     "ioredis": "^5.3.2",
-    "mocha": "^10.2.0",
+    "mocha": "^10.3.0",
     "redis-pdel": "^4.0.1"
   }
 }
