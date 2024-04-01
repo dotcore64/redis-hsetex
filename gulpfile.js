@@ -1,8 +1,6 @@
-import gulp from 'gulp';
+import { task, src, dest } from 'gulp';
 import rename from 'gulp-rename';
 import lua2js from 'gulp-redis-lua2js';
-
-const { task, src, dest } = gulp;
 
 task('build', () => src('src/hsetex.lua')
   .pipe(lua2js({ numberOfKeys: 1, type: 'module' }))
