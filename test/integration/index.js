@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module';
 import { setTimeout } from 'node:timers/promises';
 import Redis from 'ioredis';
 import { use, expect } from 'chai';
@@ -8,8 +7,7 @@ import * as pdel from 'redis-pdel';
 // eslint-disable-next-line import/no-unresolved
 import { lua, name, numberOfKeys } from 'redis-hsetex';
 
-const require = createRequire(import.meta.url);
-use(require('chai-as-promised'));
+use((await import('chai-as-promised')).default); // eslint-disable-line unicorn/no-await-expression-member
 
 const keyPrefix = 'hsetex:test:';
 const redis = new Redis({ keyPrefix });
