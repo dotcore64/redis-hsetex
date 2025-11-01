@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "exports": {
     ".": "./dist/index.js",
@@ -47,7 +47,7 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-unicorn": "^56.0.1",
     "gulp": "^5.0.1",
-    "gulp-redis-lua2js": "^5.0.0",
+    "gulp-redis-lua2js": "^6.0.0",
     "gulp-rename": "^2.1.0",
     "ioredis": "^5.8.2",
     "mocha": "^11.7.4",
