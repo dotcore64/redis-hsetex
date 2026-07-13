@@ -5,6 +5,10 @@
 
 > hsetex lua command for redis clients
 
+## Deprecation notice
+
+`HSETEX` is available natively in Redis (open source) since version 8.0.0, as [documented here](https://redis.io/docs/latest/commands/hsetex/). If you are running Redis >= 8.0.0, prefer the built-in command over this package.
+
 ## hsetex redis command
 
 Sets the value of a hash key and updates the expire date at the same time.
